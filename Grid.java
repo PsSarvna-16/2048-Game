@@ -7,6 +7,7 @@ class Grid{
 	private int[][] matrix;
 	private int x;
 	private int y;
+	private int score = 0;
 
 	public Grid(Position p){
 		this.x = p.getX();
@@ -24,11 +25,17 @@ class Grid{
 			if(matrix[x1][y1] == 0){
 				
 				matrix[x1][y1] = 2;
-				isThereMove() ?	return true :return false;
+				if(isThereMove())	
+					return true;
+				else
+					return false;
 			}
 			return fillRandom();
 		}else{
-			isThereMove() ?	return true :return false;
+			if(isThereMove())	
+				return true;
+			else
+				return false;
 		}
 	}
 
@@ -73,6 +80,7 @@ class Grid{
 			}
 			System.out.println("|\n");
 		}
+		System.out.println("***Score : " + score + "*** \n");
 	}
 
 	public boolean swipeLeft(){
@@ -89,6 +97,7 @@ class Grid{
 					}
 					else if(matrix[row][pos] == matrix[row][col] ){
 						matrix[row][pos++] += matrix[row][col];
+						score += matrix[row][col] * 2;
 						matrix[row][col] = 0;
 					}else{
 						int temp = matrix[row][col];
@@ -116,6 +125,7 @@ class Grid{
 					}
 					else if(matrix[row][pos] == matrix[row][col] ){
 						matrix[row][pos--] += matrix[row][col];
+						score += matrix[row][col] * 2;
 						matrix[row][col] = 0;
 					}else{
 						int temp = matrix[row][col];
@@ -142,6 +152,7 @@ class Grid{
 					}
 					else if(matrix[pos][col] == matrix[row][col] ){
 						matrix[pos++][col] += matrix[row][col];
+						score += matrix[row][col] * 2;
 						matrix[row][col] = 0;
 					}else{
 						int temp = matrix[row][col];
@@ -168,6 +179,7 @@ class Grid{
 					}
 					else if(matrix[pos][col] == matrix[row][col] ){
 						matrix[pos--][col] += matrix[row][col];
+						score += matrix[row][col] * 2;
 						matrix[row][col] = 0;
 					}else{
 						int temp = matrix[row][col];

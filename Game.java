@@ -3,7 +3,7 @@ package com.game;
 import java.util.Scanner;
 
 class Game{
-
+	
 	static Grid grid;
 
 	public Game(Position p){
@@ -16,21 +16,22 @@ class Game{
 		game.grid.show();
 		System.out.println();
 		Scanner sc = new Scanner(System.in);
-		while(true){
+		boolean repeat = true;
+		while(repeat){
 			System.out.print("\n Enter your Choice  : ");
 			int choice = sc.nextInt();
 			switch(choice){
 				case 8 :
 				{
-					game.grid.swipeUp();
+					repeat = game.grid.swipeUp();
 					System.out.println();
 					game.grid.show();
-					break;	
+					break;
 				}
 
 				case 2 :
 				{
-					game.grid.swipeDown();
+					repeat = game.grid.swipeDown();
 					System.out.println();
 					game.grid.show();
 					break;
@@ -38,7 +39,7 @@ class Game{
 				
 				case 4 :
 				{
-					game.grid.swipeLeft();
+					repeat = game.grid.swipeLeft();
 					System.out.println();
 					game.grid.show();
 					break;
@@ -46,7 +47,7 @@ class Game{
 
 				case 6 :
 				{
-					game.grid.swipeRight();
+					repeat = game.grid.swipeRight();
 					System.out.println();
 					game.grid.show();
 					break;
@@ -54,7 +55,7 @@ class Game{
 
 				case 0 :
 				{
-					return;
+					repeat = false;
 				} 
 			}
 
